@@ -1,0 +1,30 @@
+-- Select by Member
+SELECT *
+FROM member 
+JOIN band_member ON member.member_id = band_member.member_id
+JOIN band ON band.band_id = band_member.band_id
+JOIN album ON album.band_id = band.band_id
+WHERE member_name LIKE 'Sean Donovan';
+
+--Get tracklist
+SELECT *
+FROM track
+JOIN track_album ON track.track_id = track_album.track_id
+JOIN album ON album.album_id = track_album.album_id
+WHERE album_name LIKE 'Tupac is Alive'
+ORDER BY track_number;
+
+--Select by Band
+SELECT *
+FROM album
+JOIN band ON album.band_id = band.band_id
+JOIN genre ON album.genre_id = genre.genre_id
+WHERE band_name LIKE 'Ahn';
+
+SELECT band_name, album_name, record_label, release_date, runtime, genre_name, description 
+FROM album 
+JOIN genre ON album.genre_id = genre.genre_id 
+JOIN band ON album.band_id = band.band_id
+WHERE album_id = 3;
+
+
